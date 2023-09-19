@@ -46,6 +46,10 @@ void simpleHighway(pcl::visualization::PCLVisualizer::Ptr& viewer)
     std::vector<Car> cars = initHighway(renderScene, viewer);
     
     // TODO:: Create lidar sensor 
+    Lidar* lidar = new Lidar(cars, 0);  // Initiating on the heap (using the new keyword). Stack usually gets allocated only about 2MB of memory; heap gets more.
+    pcl::PointCloud<pcl::PointXYZ>::Ptr cloud = lidar->scan(); // Call the scan method on the lidar object. Use the arrow operator to de-reference the pointer and use the method directly.
+    renderRays(viewer, lidar->position, cloud); // Render the rays. Use the arrow operator to de-reference the pointer and use the lidar object's public value (position).
+    renderPointCloud(viewer, cloud, "lidarCloud", Color(1,1,1)); // Render the point cloud
 
     // TODO:: Create point processor
   
