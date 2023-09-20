@@ -52,6 +52,9 @@ void simpleHighway(pcl::visualization::PCLVisualizer::Ptr& viewer)
     renderPointCloud(viewer, cloud, "lidarCloud", Color(1,1,1)); // Render the point cloud
 
     // TODO:: Create point processor
+    ProcessPointClouds<pcl::PointXYZ> pointProcessor; // Stack example. Can also do heap (see line below)
+    // ProcessPointClouds<pcl::PointXYZ>* pointProcessor = new ProcessPointClouds<pcl::PointXYZ>(); // Heap example.
+
   
 }
 
